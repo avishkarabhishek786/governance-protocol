@@ -1,0 +1,22 @@
+{
+  "name": "CompundGovernanceProtocol",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "truffle test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@openzeppelin/test-helpers": "^0.5.10",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "ganache-time-traveler": "^1.0.15",
+    "mocha": "^8.3.2"
+  },
+  "dependencies": {
+    "ethers": "^5.1.0"
+  }
+}
