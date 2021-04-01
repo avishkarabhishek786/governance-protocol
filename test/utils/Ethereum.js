@@ -127,7 +127,7 @@ async function both(contract, method, args = [], opts = {}) {
 async function sendFallback(contract, opts = {}) {
   const receipt = await web3.eth.sendTransaction({ to: contract._address, ...Object.assign(getContractDefaults(), opts) });
   return Object.assign(receipt, { events: receipt.logs });
-}
+}   
 
 module.exports = {
   address,

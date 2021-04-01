@@ -12,9 +12,9 @@ contract Timelock {
     event ExecuteTransaction(bytes32 indexed txHash, address indexed target, uint value, string signature,  bytes data, uint eta);
     event QueueTransaction(bytes32 indexed txHash, address indexed target, uint value, string signature, bytes data, uint eta);
 
-    uint public constant GRACE_PERIOD = 10 minutes;
+    uint public constant GRACE_PERIOD = 14 minutes;
     uint public constant MINIMUM_DELAY = 2 minutes;
-    uint public constant MAXIMUM_DELAY = 15 minutes;
+    uint public constant MAXIMUM_DELAY = 30 days;
 
     address public admin;
     address public pendingAdmin;
@@ -51,7 +51,7 @@ contract Timelock {
     }
 
     function setPendingAdmin(address pendingAdmin_) public {
-        require(msg.sender == address(this), "Timelock::setPendingAdmin: Call must come from Timelock.");
+        require((msg.sender == address(this)) || msg.sender == address(admin), "Timelock::setPendingAdmin: Call must come from Timelock or admin.");
         pendingAdmin = pendingAdmin_;
 
         emit NewPendingAdmin(pendingAdmin);
