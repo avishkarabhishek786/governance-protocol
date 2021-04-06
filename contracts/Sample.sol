@@ -1,19 +1,17 @@
-pragma solidity ^0.5.16; 
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity ^0.8.1; 
 
 contract Sample {
     
-    uint foo = 99;
+    uint256 foo = 99;
     bool bar = false;
     
-    bytes32 public constant DOMAIN_TYPEHASH = keccak256("EIP712Domain(string name,uint256 chainId,address verifyingContract)");
-    
-    function getVal() public view returns(uint, bool) {
-        return (foo, bar);
+    function getVal() public view returns(uint256) {
+        return foo;
     }
     
-    function setVal(uint _foo, bool _bar) public {
+    function setVal(uint256 _foo) public {
         foo = _foo;
-        bar = _bar;
     }
     
 }

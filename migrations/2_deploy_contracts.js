@@ -7,9 +7,10 @@ module.exports = async function (deployer, _network, accounts) {
 
   const [SHIVASHAKTI, RAM, SITA, KRISHNA, GANESH, KARTIKEYA] = accounts;
 
-  const queueDelay = 120; // 86400*2
+  const queueDelay = 180; // 86400*2
     console.log("timelock admin ", SHIVASHAKTI);
-  await deployer.deploy(Timelock, SHIVASHAKTI, queueDelay, {from: SHIVASHAKTI});
+  await deployer.deploy(Timelock, SHIVASHAKTI, queueDelay, 
+    {from: SHIVASHAKTI});
   const timelock = await Timelock.deployed();
   const timelockAddress = timelock.address;
 
@@ -17,7 +18,8 @@ module.exports = async function (deployer, _network, accounts) {
   const comp = await Comp.deployed();
   const compAddress = comp.address;
   
-  await deployer.deploy(GovernorAlpha, timelockAddress, compAddress, SHIVASHAKTI, {from: SHIVASHAKTI});
+  await deployer.deploy(GovernorAlpha, timelockAddress, compAddress, SHIVASHAKTI, 
+    {from: SHIVASHAKTI});
   const governorAlpha = await GovernorAlpha.deployed();
   const governorAlphaAddress = governorAlpha.address;
 
